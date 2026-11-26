@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoViz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <h1>AlgoViz</h1>
+      <p>Watch a sorting algorithm work one step at a time, with a live count of every comparison and swap it makes.</p>
+    </header>
+
+    <section class="card controls" aria-label="Controls">
+      <div class="field">
+        <label for="algorithm-select">Algorithm</label>
+        <select id="algorithm-select">
+          <option value="bubble">Bubble Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="insertion">Insertion Sort</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="speed-select">Speed</label>
+        <select id="speed-select">
+          <option value="slow">Slow</option>
+          <option value="medium" selected>Medium</option>
+          <option value="fast">Fast</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button id="new-array-btn" class="btn btn-secondary" type="button">New Array</button>
+        <button id="reset-btn" class="btn btn-secondary" type="button">Reset</button>
+        <button id="start-btn" class="btn btn-primary" type="button">Start</button>
+      </div>
+    </section>
+
+    <section class="card stage-card" aria-label="Visualizer">
+      <div id="stage" class="stage"></div>
+      <ul class="legend">
+        <li><span class="dot dot-default"></span>Unsorted</li>
+        <li><span class="dot dot-comparing"></span>Comparing</li>
+        <li><span class="dot dot-swapping"></span>Swapping</li>
+        <li><span class="dot dot-sorted"></span>Sorted</li>
+      </ul>
+    </section>
+
+    <section class="panels">
+      <article class="card panel">
+        <h2>Metrics</h2>
+        <div class="metric-row">
+          <div class="metric">
+            <span class="metric-label">Comparisons</span>
+            <span id="comparison-count" class="metric-value mono">0</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Swaps</span>
+            <span id="swap-count" class="metric-value mono">0</span>
+          </div>
+        </div>
+
+        <div class="complexity">
+          <span class="metric-label">Time complexity</span>
+          <div class="badges">
+            <div class="badge">
+              <span>Best</span>
+              <strong id="complexity-best" class="mono">O(n)</strong>
+            </div>
+            <div class="badge">
+              <span>Average</span>
+              <strong id="complexity-average" class="mono">O(n²)</strong>
+            </div>
+            <div class="badge">
+              <span>Worst</span>
+              <strong id="complexity-worst" class="mono">O(n²)</strong>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card panel">
+        <h2>Step Explanation</h2>
+        <p id="explanation" class="explanation" aria-live="polite">Press Start to begin sorting the array.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
